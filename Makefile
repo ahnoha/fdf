@@ -1,7 +1,10 @@
 NAME = fdf
 CC = gcc -Wall -Wextra -Werror -Imlx
 HEADERS = fdf.h
-SRC = 	fdf.c\
+SRC = 	fdf.c \
+		ft_mlx_pixel_put.c \
+		ft_init.c \
+		ft_color.c \
 		main.c
 
 OBJ = $(SRC:.c=.o)
@@ -19,6 +22,5 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
-	rm -f pipex
 
 re: fclean all

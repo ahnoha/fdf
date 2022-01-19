@@ -6,72 +6,68 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 15:45:45 by nerraou           #+#    #+#             */
-/*   Updated: 2022/01/17 17:43:17 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/01/19 12:01:41 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-	if (x > 600 || y > 400 || x < 0|| y < 0) return ;
-	dst = data->addr + (y * data->line_length + x * 4);
-	*(unsigned int*)dst = color;
-}
-// void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-// {
-// 	(void)color;
-// 	(void)x;
-// 	(void)y;
-// 	int i = 600 * 4 * y + x * 4;
-// 	data->addr[i] = (char)255;
-// 	data->addr[i + 1] = (char)255;
-// 	data->addr[i + 2] = (char)255;
-// 	// while (i < 600 * 4 * 40)
-// 	// {
-// 	// 	i++;
-// 	// 	if (i % 4 == 3)continue;
-// 	// 	data->addr[i] = (char)255;
-// 	// }
-// }
 
-// int f(int x)
-// {
-// 	return 2 * x;
-// // 	y = i;
-// // 	x += (i % 2) ? 1: 2;
-// // }
+void draw_line(t_data *img, t_point p0, t_point p1, int color)
+{
+	int dx = abs(p0.x - p1.x);
+	int dy = abs(p0.y - p1.y);
+	int sx = (p0.x < p1.x) ? 1 : -1;
+	int sy = (p0.y < p1.y) ? 1 : -1;
+	int err = dx - dy;
+	int e2;
+
+	while (1)
+	{
+		ft_mlx_pixel_put(img, p0.x, p0.y, color);
+		e2 = 2 * err;
+		if (e2 + dy >= 0)
+		{
+			if (p0.x == p1.x)
+				break;
+			err -= dy;
+			p0.x += sx;
+		}
+		if (e2 - dy <= 0)
+		{
+			if (p0.y == p1.y)
+				break;
+			err += dx;
+			p0.y += sy;
+		}
+	}
+}
+
 
 int main()
 {
-	t_data img;
-	void	*mlx;
-	void	*mlx_win;
-	int		i;
-	int x, y;
+	t_point p1;
+	t_point p2;
+	t_point p3;
+	t_data data;
+	t_mlx  mlx;
+	int color;
+	
+	color = create_trgb(50,255,100,20);
+	p1.x = 50;
+	p1.y = 50;
+	
+	p2.x = 239;
+	p2.y = 159;
 
-	x= y = 0;
-	i = 0;
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 600, 400, "FDF");
-	img.img = mlx_new_image(mlx, 600, 400);
-	printf("soso : %d\n", img.line_length);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	printf("s : %d\n", img.line_length);
-
-	while (i < 600 * 400)
-	{
-		if (i % 600 < 10)
-		{
-			x = i % 600;
-			y = (int)(i / 400);
-			
-			my_mlx_pixel_put(&img, x, y, 0xFF0000);
-		}
-		i++;
-	}
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0,0);
-	mlx_loop(mlx);
+	p3.x = 159;
+	p3.y = 50;
+	ft_init(&data, &mlx);
+	printf("%p",mlx.mlx);
+ 	draw_line(&data, p2, p1 ,color);
+	draw_line(&data, p2, p3 ,color);
+	draw_line(&data, p1, p3 ,color);
+	mlx_put_image_to_window(mlx.mlx, mlx.mlx_win, data.img, 0,0);
+	mlx_loop(mlx.mlx);
 	return 0;
 }
