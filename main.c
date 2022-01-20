@@ -6,12 +6,11 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 15:45:45 by nerraou           #+#    #+#             */
-/*   Updated: 2022/01/19 14:54:07 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/01/20 16:43:13 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
 
 void draw_line(t_data *img, t_point p0, t_point p1, int color)
 {
