@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymoukhli <ymoukhli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 15:43:33 by nerraou           #+#    #+#             */
-/*   Updated: 2022/01/18 19:23:19 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/01/19 15:54:50 by ymoukhli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,8 @@ typedef struct s_mlx
 void	ft_mlx_pixel_put(t_data *data, int x, int y, int color);
 void 	ft_init(t_data *data, t_mlx *mlx);
 int		create_trgb(int t, int r, int g, int b);
+void	fill_triangle(t_data *img, t_point p0, t_point p1, t_point p2,int color);
+void	print_point(t_point p);
+t_point	lerp(t_point p0, t_point p1);
 
 #endif
