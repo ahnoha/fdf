@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 15:43:33 by nerraou           #+#    #+#             */
-/*   Updated: 2022/01/20 16:03:01 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/01/21 14:42:10 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct s_point
 {
 	int	x;
 	int	y;
+	int z;
+	int color;
 }				t_point;
 
 typedef struct s_mlx

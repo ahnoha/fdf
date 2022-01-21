@@ -1,63 +1,67 @@
 #include "list.h"
+#include <fcntl.h>
+#include "get_next_line.h"
+#include "fdf.h"
 
+//0  0 10 10  0  0 10 10  0  0  0 10 10 10 10 10  0  0  0
 
-int ft_strlen(const char *str)
+void parse_line(char *line, t_list *list, int y)
 {
-	int i;
-
-	i =0;
-	while (str[i])
+	char **points;
+	int x;
+	t_point *p;
+	x = 0;
+	points = ft_split(line, ' ');
+	while(points[x])
 	{
-		i++;
+		p = (t_point *)malloc(sizeof(t_point));
+		p->x = x;
+		p->y = y;
+		p->z = atoi(points[x]);
+		p->color = 0xffffff;
+		add_back(list, p);
+		x++;
 	}
-	return i;
 }
-
-static	char	*ft_strcpy(char *dst, const char *src)
+void print_list(t_list *list)
 {
-	int	i;
-
-	i = 0;
-	while (src[i])
+	t_element *elm;
+	t_point *p;
+	 elm = list->head;
+	while (elm)
 	{
-		dst[i] = src[i];
-		i++;
+		p = (t_point*)elm->content;
+		printf("{%d, %d, %d} - ", p->x, p->y, p->z);
+		elm = elm->next;
 	}
-	dst[i] = '\0';
-	return (dst);
+	
 }
 
-char	*ft_strdup(const char *s)
-{
-	int		len;
-	char	*dst;
-
-	len = ft_strlen(s);
-	dst = (char *)malloc(sizeof(char) * (len + 1));
-	if (!dst)
-		return (NULL);
-	ft_strcpy(dst, s);
-	return (dst);
-}
-
-int main()
+int main(int ac, char *av[])
 {
 	t_list *list;
 	t_element *elm;
+	int fd; 
+	char *line;
+	int	y;
 
-	list = list_new();
-	add_back(list, ft_strdup("3"));
-	add_back(list, ft_strdup("1"));
-	add_back(list, ft_strdup("2"));
-	// add_front(list, ft_strdup("2"));
-	// add_front(list, ft_strdup("3"));
-	printf("%d\n",list->size);
-	elm = list->head;
 
-	while (elm)
+	if (ac == 2)
 	{
-		printf("%s\n",elm->content);
-		elm = elm->next ;
+		y = 0;
+		fd = open(av[1],O_RDONLY);
+		if (fd < 0)	
+			return 1;
+		list = list_new();
+		line = get_next_line(fd);
+		while (line)
+		{	
+			parse_line(line, list, y);		
+			line = get_next_line(fd);
+			y++;
+		}	
+		print_list(list);
 	}
+	
 	return 0;
 }
