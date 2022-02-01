@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 15:45:45 by nerraou           #+#    #+#             */
-/*   Updated: 2022/01/20 16:43:13 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/02/01 18:44:39 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void del_point(void *point)
 {
 	free(point);
 }
-
 
 void draw_line(t_data *img, t_point p0, t_point p1, int color)
 {
@@ -49,27 +48,6 @@ void draw_line(t_data *img, t_point p0, t_point p1, int color)
 	}
 }
 
-
-
-
-void print_list(t_list *list)
-{
-	t_element *elm;
-	t_point *p;
-
-	elm = list->head;
-	if (!list)
-	{
-		printf("empty list");
-		return ;
-	}
-	while (elm)
-	{
-		p = (t_point*)elm->content;
-		printf("{%d, %d, %d} - ", p->x, p->y, p->z);
-		elm = elm->next;
-	}	
-}
 
 void ft_draw(t_data *data, char *file)
 {
@@ -103,16 +81,19 @@ void ft_draw(t_data *data, char *file)
 	}
 }
 
+
 int main(int ac, char *av[])
 {
 	t_data data;
 	t_mlx  mlx;
-	ft_init(&data, &mlx);
 	
 	if (ac == 2)
 	{
+		ft_init(&data, &mlx);
 		ft_draw(&data,av[1]);
-		mlx_put_image_to_window(mlx.mlx, mlx.mlx_win, data.img, 0,0);
+		mlx_put_image_to_window(mlx.mlx,mlx.mlx_win, data.img, 0,0);
+		//mlx_hook(mlx.mlx_win, 2, 1L<<0, ft_close, &vars);
+		mlx_key_hook(mlx.mlx_win, key_hook ,&mlx);
 	 	mlx_loop(mlx.mlx);
 	}
 	return 0;

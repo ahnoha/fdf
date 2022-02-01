@@ -1,8 +1,8 @@
 NAME = fdf
 CC = gcc -Wall -Wextra -Werror -Imlx
 HEADERS = fdf.h ./gnl/get_next_line.h ./ft_split/split.h ./list/list.h
-SRC = 	fdf.c \
-		./ft_split/ft_split.c \
+
+SRC = 	./ft_split/ft_split.c \
 		./ft_split/ft_split_utils.c \
 		./gnl/get_next_line.c \
 		./gnl/get_next_line_utils.c \
@@ -18,6 +18,7 @@ SRC = 	fdf.c \
 		parse_lines.c \
 		ft_free.c \
 		list_to_array.c \
+		key_hook.c \
 		main.c
 
 INCLUDES_PATH = -I ./  -I./ft_split -I ./gnl/ -I./list/

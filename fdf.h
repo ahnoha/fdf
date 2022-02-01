@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 15:43:33 by nerraou           #+#    #+#             */
-/*   Updated: 2022/01/21 14:42:10 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/02/01 18:13:50 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ size_t	ft_strlen(const char *s);
 char	*ft_strncpy(char *dest, const char *src, size_t n);
 char	**ft_free(char **str, int size);
 t_point iso(int x, int y, int z);
-int  parse_line(char *line, t_list *list, int y);
+int 	parse_line(char *line, t_list *list, int y);
+int		key_hook(int keycode, t_mlx *mlx);
 t_list *parse_lines(char *file, int *w, int *h);
 t_point ***list_to_array(t_list *list, int h, int w);
 #endif
