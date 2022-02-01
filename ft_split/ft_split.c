@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "split.h"
+
 
 static size_t	word_count(char const *s, char c)
 {
@@ -73,3 +74,4 @@ char	**ft_split(char const *s, char c)
 	str[i] = NULL;
 	return (str);
 }
+

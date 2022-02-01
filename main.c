@@ -12,6 +12,13 @@
 
 #include "fdf.h"
 
+
+void del_point(void *point)
+{
+	free(point);
+}
+
+
 void draw_line(t_data *img, t_point p0, t_point p1, int color)
 {
 	int dx = abs(p0.x - p1.x);
@@ -23,7 +30,7 @@ void draw_line(t_data *img, t_point p0, t_point p1, int color)
 
 	while (1)
 	{
-		ft_mlx_pixel_put(img, p0.x, p0.y, color);
+		ft_mlx_pixel_put(img, p0.x  + img->width / 2 , p0.y  , color);
 		e2 = 2 * err;
 		if (e2 + dy >= 0)
 		{
@@ -43,30 +50,70 @@ void draw_line(t_data *img, t_point p0, t_point p1, int color)
 }
 
 
-int main()
+
+
+void print_list(t_list *list)
 {
+	t_element *elm;
+	t_point *p;
+
+	elm = list->head;
+	if (!list)
+	{
+		printf("empty list");
+		return ;
+	}
+	while (elm)
+	{
+		p = (t_point*)elm->content;
+		printf("{%d, %d, %d} - ", p->x, p->y, p->z);
+		elm = elm->next;
+	}	
+}
+
+void ft_draw(t_data *data, char *file)
+{
+	int w;
+	int h;
+	int i;
+	int j;
 	t_point p1;
 	t_point p2;
-	t_point p3;
+
+	i = 0;
+	t_list *list = parse_lines(file, &w, &h);
+	t_point ***tab = list_to_array(list, h, w);
+	while (i < h)
+	{
+		j = 0;
+		while (j < w)
+		{
+			p1 = iso(tab[i][j]->x, tab[i][j]->y, tab[i][j]->z);
+			if (j + 1 >= w)
+				break ;
+			p2 = iso(tab[i][j+1]->x, tab[i][j+1]->y, tab[i][j+1]->z);
+			draw_line(data , p1 ,p2 ,0xffffff);
+			if (i + 1 >= h)
+				break ;
+			p2 = iso(tab[i+1][j]->x, tab[i+1][j]->y, tab[i + 1][j]->z);
+			draw_line(data , p1 ,p2 ,0xffffff);
+			j++;
+		}
+		i++;
+	}
+}
+
+int main(int ac, char *av[])
+{
 	t_data data;
 	t_mlx  mlx;
-	int color;
-	
-	color = create_trgb(50,255,100,20);
-	p1.x = 50;
-	p1.y = 50;
-	
-	p2.x = 239;
-	p2.y = 159;
-
-	p3.x = 159;
-	p3.y = 50;
 	ft_init(&data, &mlx);
-	printf("%p",mlx.mlx);
- 	draw_line(&data, p2, p1 ,color);
-	draw_line(&data, p2, p3 ,color);
-	draw_line(&data, p1, p3 ,color);
-	mlx_put_image_to_window(mlx.mlx, mlx.mlx_win, data.img, 0,0);
-	mlx_loop(mlx.mlx);
+	
+	if (ac == 2)
+	{
+		ft_draw(&data,av[1]);
+		mlx_put_image_to_window(mlx.mlx, mlx.mlx_win, data.img, 0,0);
+	 	mlx_loop(mlx.mlx);
+	}
 	return 0;
 }

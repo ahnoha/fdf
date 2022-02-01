@@ -19,7 +19,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "get_next_line.h"
-
+#include "split.h"
+#include "list.h"
 typedef struct s_data
 {
 	void	*img;
@@ -53,4 +54,9 @@ int		create_trgb(int t, int r, int g, int b);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 size_t	ft_strlen(const char *s);
 char	*ft_strncpy(char *dest, const char *src, size_t n);
+char	**ft_free(char **str, int size);
+t_point iso(int x, int y, int z);
+int  parse_line(char *line, t_list *list, int y);
+t_list *parse_lines(char *file, int *w, int *h);
+t_point ***list_to_array(t_list *list, int h, int w);
 #endif

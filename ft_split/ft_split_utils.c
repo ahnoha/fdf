@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "split.h"
 
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
@@ -60,3 +60,4 @@ char	*ft_strncpy(char *dest, const char *src, size_t n)
 	}
 	return (dest);
 }
+
