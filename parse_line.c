@@ -1,10 +1,13 @@
 #include "fdf.h"
 
+
+
 int  parse_line(char *line, t_list *list, int y)
 {
 	char **points;
 	int x;
 	t_point *p;
+	int i;
 
 	x = 0;
 	points = ft_split(line, ' ');
@@ -21,7 +24,13 @@ int  parse_line(char *line, t_list *list, int y)
 		p->x = x;
 		p->y = y;
 		p->z = atoi(points[x]);
-		p->color = 0xffffff;
+		// TODO: MAKE IT A FUNCTION GET_COLOR
+		i = ft_indexof(points[x],'x');
+		if (i > -1)
+			p->color = to_decimal(points[x]+i+1);
+		else
+			p->color = 0xffffff;
+		// printf("%x\n",p->color);
 		add_back(list, p);
 		x++;
 	}

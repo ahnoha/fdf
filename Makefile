@@ -19,6 +19,7 @@ SRC = 	./ft_split/ft_split.c \
 		ft_free.c \
 		list_to_array.c \
 		key_hook.c \
+		to_decimal.c \
 		main.c
 
 INCLUDES_PATH = -I ./  -I./ft_split -I ./gnl/ -I./list/

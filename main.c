@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 15:45:45 by nerraou           #+#    #+#             */
-/*   Updated: 2022/02/01 18:44:39 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/02/02 16:33:50 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,11 @@ void ft_draw(t_data *data, char *file)
 			if (j + 1 >= w)
 				break ;
 			p2 = iso(tab[i][j+1]->x, tab[i][j+1]->y, tab[i][j+1]->z);
-			draw_line(data , p1 ,p2 ,0xffffff);
+			draw_line(data , p1 ,p2 ,tab[i][j]->color);
 			if (i + 1 >= h)
 				break ;
 			p2 = iso(tab[i+1][j]->x, tab[i+1][j]->y, tab[i + 1][j]->z);
-			draw_line(data , p1 ,p2 ,0xffffff);
+			draw_line(data , p1 ,p2 ,tab[i][j]->color);
 			j++;
 		}
 		i++;

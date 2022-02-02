@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 15:43:33 by nerraou           #+#    #+#             */
-/*   Updated: 2022/02/01 18:13:50 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/02/02 16:23:50 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,5 @@ int 	parse_line(char *line, t_list *list, int y);
 int		key_hook(int keycode, t_mlx *mlx);
 t_list *parse_lines(char *file, int *w, int *h);
 t_point ***list_to_array(t_list *list, int h, int w);
+int 	to_decimal(char *str);
 #endif
