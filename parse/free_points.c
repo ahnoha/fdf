@@ -1,40 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   free_points.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/02 13:33:53 by nerraou           #+#    #+#             */
-/*   Updated: 2022/02/09 13:53:05 by nerraou          ###   ########.fr       */
+/*   Created: 2022/02/09 16:28:45 by nerraou           #+#    #+#             */
+/*   Updated: 2022/02/09 16:33:04 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf.h" 
 
-int	ft_atoi(const char *str)
+void free_points(t_point ***tab, int h)
 {
-	int	i;
-	int	signe;
-	int	num;
+	int i;
 
 	i = 0;
-	signe = 1;
-	num = 0;
-	while (str[i] == '\n' || str[i] == '\t' || str[i] == '\r'
-		|| str[i] == '\v' || str[i] == '\f' || str[i] == ' ' )
-		i++;
-	if (str[i] == '+')
-		i++;
-	else if (str[i] == '-')
+	while (i < h)
 	{
-		i++;
-		signe = -1;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		num = num * 10 + str[i] - '0';
+		free(tab[i]);
 		i++;
 	}
-	return (num * signe);
+	free(tab);
 }

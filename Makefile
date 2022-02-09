@@ -1,6 +1,6 @@
 NAME = fdf
 CC = gcc -Wall -Wextra -Werror -Imlx
-HEADERS = fdf.h ./gnl/get_next_line.h ./ft_split/split.h ./list/list.h
+HEADERS = fdf.h ./gnl/get_next_line.h ./ft_split/split.h ./list/list.h ./parse/parse.h
 
 SRC = 	./ft_split/ft_split.c \
 		./ft_split/ft_split_utils.c \
@@ -12,17 +12,20 @@ SRC = 	./ft_split/ft_split.c \
 		./list/list_del.c \
 		ft_mlx_pixel_put.c \
 		ft_init.c \
-		ft_color.c \
 		iso.c \
-		parse_line.c \
-		parse_lines.c \
-		ft_free.c \
-		list_to_array.c \
+		./parse/parse_line.c \
+		./parse/parse_lines.c \
+		./parse/ft_free.c \
+		./parse/list_to_array.c \
 		key_hook.c \
-		to_decimal.c \
+		./parse/to_decimal.c \
+		./parse/del_point.c \
+		./parse/free_points.c \
+		ft_atoi.c \
+		draw_line.c \
 		main.c
 
-INCLUDES_PATH = -I ./  -I./ft_split -I ./gnl/ -I./list/
+INCLUDES_PATH = -I ./  -I./ft_split -I./gnl/ -I./list/ -I./parse/
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)

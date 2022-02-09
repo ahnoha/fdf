@@ -1,10 +1,6 @@
 #include "fdf.h"
 
 
-void del(void *point)
-{
-	free(point);
-}
 
 t_list *parse_lines(char *file, int *w, int *h)
 {
@@ -27,7 +23,7 @@ t_list *parse_lines(char *file, int *w, int *h)
 		free(line);
 		if (*w == -1)
 		{
-			list_del(&list, del);
+			list_del(&list, del_point);
 			return NULL;
 		}
 		line = get_next_line(fd);
