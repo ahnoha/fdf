@@ -1,6 +1,6 @@
 NAME = fdf
 CC = gcc -Wall -Wextra -Werror -Imlx
-HEADERS = fdf.h ./gnl/get_next_line.h ./ft_split/split.h ./list/list.h ./parse/parse.h
+HEADERS = fdf.h structures.h ./gnl/get_next_line.h ./ft_split/split.h ./list/list.h ./parse/parse.h ./draw/draw.h
 
 SRC = 	./ft_split/ft_split.c \
 		./ft_split/ft_split_utils.c \
@@ -21,11 +21,13 @@ SRC = 	./ft_split/ft_split.c \
 		./parse/to_decimal.c \
 		./parse/del_point.c \
 		./parse/free_points.c \
-		ft_atoi.c \
-		draw_line.c \
+		./parse/ft_atoi.c \
+		./draw/draw_line.c \
+		./draw/draw_lines.c \
+		./draw/ft_draw.c \
 		main.c
 
-INCLUDES_PATH = -I ./  -I./ft_split -I./gnl/ -I./list/ -I./parse/
+INCLUDES_PATH = -I ./  -I./ft_split -I./gnl/ -I./list/ -I./parse/ -I./draw/
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)

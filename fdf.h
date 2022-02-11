@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 15:43:33 by nerraou           #+#    #+#             */
-/*   Updated: 2022/02/09 17:05:58 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/02/11 17:51:03 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,25 +22,10 @@
 #include "get_next_line.h"
 #include "split.h"
 #include "list.h"
+#include "structures.h"
 #include "parse.h"
+#include "draw.h"
 
-typedef struct s_data
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int 	line_length;
-	int		endian;
-	int		width;
-	int		height;
-}					t_data;
-
-
-typedef struct s_mlx
-{
-	void	*mlx;
-	void	*mlx_win;
-}				t_mlx;
 
 char	**ft_split(char const *s, char c);
 void	ft_mlx_pixel_put(t_data *data, int x, int y, int color);
