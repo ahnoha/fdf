@@ -6,32 +6,31 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 16:22:49 by nerraou           #+#    #+#             */
-/*   Updated: 2022/02/08 12:10:40 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/02/14 13:09:28 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int  to_decimal(char *str)
+int	to_decimal(char *str)
 {
-	int num;
-	int decimal;
-	int i;
-	int len;
+	int	num;
+	int	decimal;
+	int	i;
+	int	len;
 
 	decimal = 0;
-
 	i = 1;
 	len = ft_strlen(str) - 1;
 	while (len >= 0)
-	{ 
+	{
 		num = 0;
 		if (str[len] >= 'A' && str[len] <= 'F')
 			num = (str[len] - 'A') + 10;
 		else if (str[len] >= 'a' && str[len] <= 'f')
 			num = (str[len] - 'a') + 10;
 		else if (str[len] >= '0' && str[len] <= '9')
-			num = str[len] - '0';	
+			num = str[len] - '0';
 		decimal += num * (i);
 		i *= 16;
 		len--;

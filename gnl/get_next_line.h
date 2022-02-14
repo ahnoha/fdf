@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 13:51:07 by nerraou           #+#    #+#             */
-/*   Updated: 2021/11/25 17:34:18 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/02/14 13:06:00 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-#ifndef BUFFER_SIZE
-#define BUFFER_SIZE 1000
-#endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1000
+# endif
 
 int		ft_indexof(const char *str, int c);
 

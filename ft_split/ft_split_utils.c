@@ -6,12 +6,11 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 14:23:42 by nerraou           #+#    #+#             */
-/*   Updated: 2022/01/20 15:54:44 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/02/14 10:42:24 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "split.h"
-
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
@@ -60,4 +59,3 @@ char	*ft_strncpy(char *dest, const char *src, size_t n)
 	}
 	return (dest);
 }
-

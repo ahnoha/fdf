@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 14:12:17 by nerraou           #+#    #+#             */
-/*   Updated: 2021/11/25 13:47:17 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/02/14 11:20:31 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ char	*read_line(int fd, char **rest)
 	char	*str;
 	ssize_t	reads;
 
-	reads = 0;
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return (NULL);

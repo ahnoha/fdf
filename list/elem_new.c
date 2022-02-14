@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 14:58:59 by nerraou           #+#    #+#             */
-/*   Updated: 2022/01/21 16:09:18 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/02/14 11:36:07 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_element	*elem_new(void *content)
 {
 	t_element	*new_elm;
-	
+
 	new_elm = (t_element *)malloc(sizeof(t_element));
 	if (!new_elm)
 		return (NULL);

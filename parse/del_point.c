@@ -6,13 +6,13 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:11:01 by nerraou           #+#    #+#             */
-/*   Updated: 2022/02/09 14:11:28 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/02/14 11:37:58 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void del_point(void *point)
+void	del_point(void *point)
 {
 	free(point);
 }

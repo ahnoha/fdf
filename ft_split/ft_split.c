@@ -6,14 +6,13 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 14:06:42 by nerraou           #+#    #+#             */
-/*   Updated: 2022/01/20 16:05:25 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/02/14 10:41:08 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "split.h"
 
-
-static size_t	word_count(char const *s, char c)
+static	size_t	word_count(char const *s, char c)
 {
 	int		index;
 	size_t	word;
@@ -32,7 +31,7 @@ static size_t	word_count(char const *s, char c)
 	return (word);
 }
 
-static char	**ft_free(char **str, int size)
+static	char	**ft_free(char **str, int size)
 {
 	int	i;
 
@@ -48,11 +47,11 @@ static char	**ft_free(char **str, int size)
 
 char	**ft_split(char const *s, char c)
 {
-	char	**str;
-	size_t	i;
-	size_t	words;
-	size_t	start;
-	size_t	length;
+	char		**str;
+	size_t		i;
+	size_t		words;
+	size_t		start;
+	size_t		length;
 
 	words = word_count(s, c);
 	i = 0;
@@ -74,4 +73,3 @@ char	**ft_split(char const *s, char c)
 	str[i] = NULL;
 	return (str);
 }
-
