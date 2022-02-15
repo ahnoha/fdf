@@ -6,18 +6,18 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:16:40 by nerraou           #+#    #+#             */
-/*   Updated: 2022/02/14 13:17:38 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/02/15 16:27:58 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_point	iso(int x, int y, int z)
+t_point	iso(int x, int y, int z, int s)
 {
 	t_point	p;
 
-	x = x * 1;
-	y = y * 1;
+	x = x * s;
+	y = y * s;
 	p.x = (x - y) * cos(0.523599);
 	p.y = (-z) + (x + y) * sin(0.523599);
 	return (p);

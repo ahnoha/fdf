@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 15:43:33 by nerraou           #+#    #+#             */
-/*   Updated: 2022/02/14 13:15:03 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/02/14 18:01:00 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ int		key_hook(int keycode, t_mlx *mlx);
 int		ft_atoi(const char *str);
 
 size_t	ft_strlen(const char *s);
-t_point	iso(int x, int y, int z);
+t_point	iso(int x, int y, int z, int s);
 
 #endif
