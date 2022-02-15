@@ -6,26 +6,13 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:35:32 by nerraou           #+#    #+#             */
-/*   Updated: 2022/02/15 18:13:48 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/02/15 19:06:19 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	set_scale(t_data *d, int w, int h)
-{
-	int	s1;
-	int	s2;
 
-	s1 = (sqrt(2.0) / 2.0) * (d->width / w);
-	s2 = (sqrt(2.0) / 2.0) * (d->height / h);
-	if (s1 <= s2)
-		d->s = s1 - 1;
-	else if (s1 < 1 || s2 < 1)
-		d->s = 1;
-	else if (s1 >= s2)
-		d->s = s2 - 1;
-}
 
 void	draw_lines(t_point ***t, t_data *d, int w, int h)
 {
@@ -35,7 +22,6 @@ void	draw_lines(t_point ***t, t_data *d, int w, int h)
 	t_point		p2;
 	
 	i = -1;
-	set_scale(d, w, h);
 	while (++i < h)
 	{
 		j = -1;
