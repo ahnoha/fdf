@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:35:32 by nerraou           #+#    #+#             */
-/*   Updated: 2022/02/17 15:59:30 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/02/17 19:58:11 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 
 float	get_left_shift(t_point ***t, t_data *d, int w, int h)
 {
-	t_point a;
-	t_point c;
+	t_point	b;
+	t_point	c;
+	float	diff;
 
-	(void)w;
-	a = iso(t[0][0]->x, t[0][0]->y, t[0][0]->z, 1);
-	//b = iso(t[0][w - 1]->x, t[0][w - 1]->y, t[0][w - 1]->z, 1);
+	b = iso(t[0][w - 1]->x, t[0][w - 1]->y, t[0][w - 1]->z, 1);
 	c = iso(t[h - 1][0]->x, t[h - 1][0]->y, t[h - 1][0]->z, 1);
-	//printf("[b.x]%f - [c.x]%f - [diff]%f - [scale]%f\n", b.x, c.x, fabsf(b.x) - fabsf(c.x), d->s);
-	return (fabsf((fabsf(a.x) - fabsf(c.x))) * d->s );
+	diff = ((b.x - c.x) * d->s) / 2.0f;
+	return ((-1.0f * c.x * d->s) + (d->width / 2.0f) - diff);
 }
 
 void	draw_lines(t_point ***t, t_data *d, int w, int h)

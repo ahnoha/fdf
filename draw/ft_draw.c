@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:36:31 by nerraou           #+#    #+#             */
-/*   Updated: 2022/02/17 15:41:25 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/02/17 18:45:42 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static void	set_scale(t_data *d, float w, float h)
 	float	s1;
 	float	s2;
 
-	s1 = (d->width / w);
-	s2 = (d->height / h);
+	s1 = 0.9 * (d->width / w);
+	s2 = 0.9 * (d->height / h);
 	if (s1 < s2)
 		d->s = s1;
 	else if (s1 > s2)
