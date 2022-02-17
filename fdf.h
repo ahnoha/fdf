@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 15:43:33 by nerraou           #+#    #+#             */
-/*   Updated: 2022/02/14 18:01:00 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/02/17 14:18:59 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,12 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 void	ft_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	ft_init(t_data *data, t_mlx *mlx);
-void	draw_line(t_data *img, t_point p0, t_point p1, int color);
 
 int		create_trgb(int t, int r, int g, int b);
 int		key_hook(int keycode, t_mlx *mlx);
 int		ft_atoi(const char *str);
 
 size_t	ft_strlen(const char *s);
-t_point	iso(int x, int y, int z, int s);
+t_point	iso(float x, float y, float z, float s);
 
 #endif

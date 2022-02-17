@@ -6,66 +6,43 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:36:31 by nerraou           #+#    #+#             */
-/*   Updated: 2022/02/15 21:05:52 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/02/17 15:41:25 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int min(int a, int b)
+static void	set_scale(t_data *d, float w, float h)
 {
-	return a < b ? a : b;
-}
+	float	s1;
+	float	s2;
 
-int max(int a, int b)
-{
-	return a > b ? a : b;
-}
-
-static void	set_scale(t_data *d, int w, int h)
-{
-	int	s1;
-	int	s2;
-
-	s1 = 0.666 * ((float)d->width / (float)w / 1.5);
-	s2 =  0.666 * ((float)d->height / (float)h );
-	if (s1 <= s2)
+	s1 = (d->width / w);
+	s2 = (d->height / h);
+	if (s1 < s2)
 		d->s = s1;
-	if (s1 < 1 || s2 < 1)
-		d->s = 1;
-	else if (s1 >= s2)
+	else if (s1 > s2)
 		d->s = s2;
 }
 
-void	get_new_dimension(t_point ***tab, t_data *data, int w, int h)
+void	get_new_dimension(t_point ***t, t_data *data, int w, int h)
 {
-	int new_w;
-	int new_h;
-	
-	t_point a;
-	t_point b;
-	t_point c;
-	t_point d;
+	float	new_w;
+	float	new_h;
+	t_point	p[4];
+	float	values[4];
 
-	a = iso(tab[0][0]->x,tab[0][0]->y,tab[0][0]->z,1);
-	b = iso(tab[0][w - 1]->x,tab[0][w - 1]->y,tab[0][w - 1]->z, 1);
-	c = iso(tab[h - 1][0]->x,tab[h - 1][0]->y,tab[h - 1][0]->z, 1);
-	d = iso(tab[h - 1][w - 1]->x,tab[h - 1][w - 1]->y,tab[h - 1][w - 1]->z, 1);
-	
-	printf("[ay]%d [ax]%d\n",a.y,a.x);
-	printf("[by]%d [bx]%d\n",b.y,b.x);
-	printf("[cy]%d [cx]%d\n",c.y,c.x);
-	printf("[dy]%d [dy]%d\n",d.y,d.x);
-	
-	int minX = min(a.x,min(b.x,min(c.x,d.x)));
-	int maxX = max(a.x,max(b.x,max(c.x,d.x)));
-	int minY = min(a.y,min(b.y,min(c.y,d.y)));
-	int maxY = max(a.y,max(b.y,max(c.y,d.y)));
-	
-	new_w = abs(maxX) + abs(minX);
-	new_h = abs(maxY) + abs(minY);
-	
-	set_scale(data, maxX, new_h);
+	p[0] = iso(t[0][0]->x, t[0][0]->y, t[0][0]->z, 1);
+	p[1] = iso(t[0][w - 1]->x, t[0][w - 1]->y, t[0][w - 1]->z, 1);
+	p[2] = iso(t[h - 1][0]->x, t[h - 1][0]->y, t[h - 1][0]->z, 1);
+	p[3] = iso(t[h - 1][w - 1]->x, t[h - 1][w - 1]->y, t[h - 1][w - 1]->z, 1);
+	values[0] = fminf(p[0].x, fminf(p[1].x, fminf(p[2].x, p[3].x)));
+	values[1] = fmaxf(p[0].x, fmaxf(p[1].x, fmaxf(p[2].x, p[3].x)));
+	values[2] = fminf(p[0].y, fminf(p[1].y, fminf(p[2].y, p[3].y)));
+	values[3] = fmaxf(p[0].y, fmaxf(p[1].y, fmaxf(p[2].y, p[3].y)));
+	new_w = values[1] + fabsf(values[0]);
+	new_h = values[3] + fabsf(values[2]);
+	set_scale(data, new_w, new_h);
 }
 
 void	ft_draw(t_data *data, char *file)

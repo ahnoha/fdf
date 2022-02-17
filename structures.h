@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:53:56 by nerraou           #+#    #+#             */
-/*   Updated: 2022/02/14 18:00:40 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/02/17 15:40:52 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_data
 	int		endian;
 	int		width;
 	int		height;
-	int		s;
+	float	s;
 }					t_data;
 
 typedef struct s_mlx
@@ -35,10 +35,10 @@ typedef struct s_mlx
 
 typedef struct s_point
 {
-	int	x;
-	int	y;
-	int	z;
-	int	color;
+	float	x;
+	float	y;
+	float	z;
+	int		color;
 }				t_point;
 
 #endif

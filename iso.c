@@ -6,13 +6,13 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:16:40 by nerraou           #+#    #+#             */
-/*   Updated: 2022/02/15 16:27:58 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/02/17 16:39:22 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_point	iso(int x, int y, int z, int s)
+t_point	iso(float x, float y, float z, float s)
 {
 	t_point	p;
 

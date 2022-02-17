@@ -6,7 +6,7 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 12:05:49 by nerraou           #+#    #+#             */
-/*   Updated: 2022/02/15 16:09:28 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/02/17 16:34:28 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ static	t_list	*dummy_del(t_list **list)
 
 t_list	*parse_lines(char *file, int *w, int *h)
 {
-	int		y;
 	int		fd;
 	int		prev_w;
 	char	*line;
@@ -33,19 +32,17 @@ t_list	*parse_lines(char *file, int *w, int *h)
 	if (!list)
 		return (NULL);
 	line = get_next_line(fd);
-	y = 0;
+	*h = 0;
 	while (line)
 	{
-		//TODO try to make this a function 
-		*w = parse_line(line, list, y);
-		if (y == 0)
+		*w = parse_line(line, list, *h);
+		if (*h == 0)
 			prev_w = *w;
 		free(line);
 		if (*w == -1 || prev_w != *w)
 			return (dummy_del(&list));
 		line = get_next_line(fd);
-		y++;
+		(*h)++;
 	}
-	*h = y;
 	return (list);
 }
