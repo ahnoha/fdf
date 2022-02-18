@@ -6,13 +6,13 @@
 /*   By: nerraou <nerraou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:35:32 by nerraou           #+#    #+#             */
-/*   Updated: 2022/02/17 19:58:11 by nerraou          ###   ########.fr       */
+/*   Updated: 2022/02/18 11:01:35 by nerraou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-float	get_left_shift(t_point ***t, t_data *d, int w, int h)
+static float	get_left_shift(t_point ***t, t_data *d, int w, int h)
 {
 	t_point	b;
 	t_point	c;
